@@ -1,22 +1,17 @@
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class UserProfile {
     private String username;
     private String password;
     private ArrayList<UserProfile> friends;
+    private ArrayList<UserProfile> blockedUsers;
     private ArrayList<Post> posts;
-    private String name;
-    private String bio;
     private String profilePictureLink;
-    private Date birthDate;
-    public UserProfile(String username, String password, String name, String bio, String profilePictureLink, Date birthDate){
+    public UserProfile(String username, String password, String profilePictureLink){
         this.username = username;
         this.password = password;
-        this.name = name;
-        this.bio = bio;
         this.profilePictureLink = profilePictureLink;
-        this.birthDate = birthDate;
         this.friends = null; //resets
         this.posts = null; //resets
     }
@@ -25,17 +20,8 @@ public class UserProfile {
     public String getUsername() {
         return username;
     }
-    public String getName() {
-        return name;
-    }
-    public String getBio() {
-        return bio;
-    }
     public String getPassword() {
         return password;
-    }
-    public Date getBirthDate() {
-        return birthDate;
     }
     public ArrayList<Post> getPosts() {
         return posts;
@@ -52,12 +38,6 @@ public class UserProfile {
             return true;
         } else return false;
     }
-    public void deleteUser(){
-        //deletes person from platform as a whole
-    }
-    public void updateBio(String newBio){
-        this.bio = newBio;
-    }
     public void updatePic(String newProfilePictureLink){
         this.profilePictureLink = newProfilePictureLink;
     }
@@ -72,6 +52,9 @@ public class UserProfile {
     }
     public void blockUser(UserProfile user){
         removeFriend(user);
-        //add code to disable user from recieving message from this user
+        blockedUsers.add(user);
+    }
+    public void sendMessage(String messageID, UserProfile user1, UserProfile user2){
+        //maybe change this to UserProfile class
     }
 }
