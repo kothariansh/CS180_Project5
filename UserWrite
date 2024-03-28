@@ -1,0 +1,19 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class UserWrite extends UserProfile{
+    public UserWrite(String username, String password, String profilePictureLink) {
+        super(username, password, profilePictureLink);
+    }
+    public void writeUserInfo() throws IOException {
+        try{
+        FileWriter fw = new FileWriter("UserInfo.txt"); //change file name
+        PrintWriter pw = new PrintWriter(fw);
+        pw.write(getUsername() + ", " +  getPassword() + "," + getProfilePictureLink());
+        pw.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+}
